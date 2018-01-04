@@ -1,2 +1,4 @@
 build/
 modules/
+/Resources/iphone/GoogleService-Info.plist
+/Resources/android/google-services.json
