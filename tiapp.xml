@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+	<id>com.appc.firebasedemo</id>
+	<name>test_firebase</name>
+	<version>1.0.0</version>
+	<publisher>not specified</publisher>
+	<url></url>
+	<description></description>
+	<copyright>not specified</copyright>
+	<icon>appicon.png</icon>
+	<fullscreen>false</fullscreen>
+	<navbar-hidden>false</navbar-hidden>
+	<analytics>true</analytics>
+	<guid>b3d4a1a7-0ed9-476b-89a9-bf9a9562aac7</guid>
+	<property name="ti.ui.defaultunit" type="string">dp</property>
+	<property name="run-on-main-thread" type="bool">true</property>
+	<ios>
+		<enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+		<use-app-thinning>true</use-app-thinning>
+		<plist>
+			<dict>
+				<key>UISupportedInterfaceOrientations~iphone</key>
+				<array>
+					<string>UIInterfaceOrientationPortrait</string>
+				</array>
+				<key>UISupportedInterfaceOrientations~ipad</key>
+				<array>
+					<string>UIInterfaceOrientationPortrait</string>
+					<string>UIInterfaceOrientationPortraitUpsideDown</string>
+					<string>UIInterfaceOrientationLandscapeLeft</string>
+					<string>UIInterfaceOrientationLandscapeRight</string>
+				</array>
+				<key>UIRequiresPersistentWiFi</key>
+				<false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+				<key>UIStatusBarHidden</key>
+				<false/>
+				<key>UIStatusBarStyle</key>
+				<string>UIStatusBarStyleDefault</string>
+			</dict>
+		</plist>
+	</ios>
+	<android xmlns:android="http://schemas.android.com/apk/res/android">
+		<manifest>
+			<application>
+				<service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />	
+				<service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
+				<service android:name="com.appc.firebasedemo.gcm.RegistrationIntentService" android:exported="false" />
+				<service android:name="com.appc.firebasedemo.gcm.GcmIntentService" android:exported="false">
+				   <intent-filter>
+				      <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				   </intent-filter>
+				</service>
+				<service android:name="com.appc.firebasedemo.gcm.GcmIntentService" android:exported="false">
+				   <intent-filter>
+				      <action android:name="com.google.android.c2dm.intent.SEND" />
+				   </intent-filter>
+				</service>
+				<service android:name="com.appc.firebasedemo.gcm.GcmIDListenerService" android:exported="false">
+				   <intent-filter>
+				      <action android:name="com.google.android.gms.iid.InstanceID" />
+				   </intent-filter>
+				</service>
+				<receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true">
+					 <intent-filter>
+							<action android:name="com.google.android.gms.measurement.UPLOAD" />
+					 </intent-filter>
+				</receiver>  
+			</application>
+		</manifest>
+	</android>
+	<modules>
+		<module platform="android">ti.playservices</module>
+		<module>firebase.core</module>
+		<module>firebase.analytics</module>
+	</modules>
+	<plugins/>
+	<deployment-targets>
+		<target device="android">true</target>
+		<target device="ipad">true</target>
+		<target device="iphone">true</target>
+	</deployment-targets>
+	<sdk-version>7.0.1.GA</sdk-version>
+</ti:app>
